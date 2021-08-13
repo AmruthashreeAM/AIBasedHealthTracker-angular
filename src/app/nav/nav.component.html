@@ -1,0 +1,56 @@
+  <mat-sidenav-container  class="sidenav-container custom-sidenav-container mat-app-background" [ngClass]="{'dark-theme-mode':isDarkTheme}">
+  <mat-sidenav #drawer class="sidenav" class = " mat-elevation-z8" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+
+    <img class="avatar mat-elevation-z8" src="/../assets/profilephoto.jpeg" />
+    <h4 class="name">{{username}}</h4>
+    <button mat-button class="menu-button" [routerLink]="'/home'">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-button class="menu-button">
+      <mat-icon>person</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-button class="menu-button">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </button>
+    <button mat-button class="menu-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+    
+<mat-divider></mat-divider>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+      <mat-spinner style="top: 50%; left: 50%;"></mat-spinner>
+    </div>
+
+    <mat-toolbar color = "primary">
+    <span>Welcome {{username}} !! Monitor Health at your Desk</span>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+
+      <span style="flex:auto;"></span>
+      <mat-slide-toggle [(ngModel)]="isDarkTheme" labelPosition="before" (change)="storeThemeSelection()">
+        <mat-icon>bedtime</mat-icon>
+      </mat-slide-toggle>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

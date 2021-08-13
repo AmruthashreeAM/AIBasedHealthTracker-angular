@@ -1,0 +1,67 @@
+
+<app-nav></app-nav>
+
+<div class="grid-container">
+  <style>
+    /* unvisited link */
+    a:link {
+        /* removes the underline */
+        text-decoration:none;
+    }
+    a:hover {
+        background-color:aqua;
+    } 
+
+    </style>
+  <h1 class="mat-h1"></h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+      <mat-grid-tile  rowspan="2" >
+        <mat-card class="dashboard-card card-image2 ">
+          <mat-card-header class="mat-app-background card-title">
+            <mat-card-title>
+              <h4 class = "p">Thermal camera results</h4>
+              <app-camera (pictureTaken)="handleImage($event)"></app-camera>
+              <!-- <div class="snapshot" *ngIf="webcamImage">
+              <img [src]="webcamImage.imageAsDataUrl" />
+              </div> -->
+            </mat-card-title>
+          </mat-card-header>
+          <button (click)="refreshTemperature()" class="btn btn-primary btn-block btn-lg">Record Temparature</button>
+        </mat-card>
+
+      </mat-grid-tile>
+      <mat-grid-tile  rowspan="1" colspan="1" >
+        <mat-card class="dashboard-card card-image2">
+          <mat-card-header class="mat-app-background card-title">
+            <mat-card-title>
+              <h4 class = p>Temparature monitor</h4>
+            </mat-card-title>   
+          </mat-card-header>
+          <br>
+          <br> 
+          <h4 class = h>Patient Name : {{cards[0].patientName}}</h4>
+          <h4 class = h>Your Recorded temperature is {{cards[0].temperatureNow}}</h4>
+          <!-- <h4 class = h>Recognized Person is {{ids[0].id}}</h4> -->
+          <h4 class = h><span>{{cards[0].temperatureNow >= 99 ? 'You need to visit Doctor' : 'You are healthy'}}</span></h4>
+          <h4><a style="color: white; font-size:20px; font-family: Arial, Helvetica, sans-serif;font-weight: bold" class [routerLink]="'/temparature'" routerLinkActive="active" >View Temparature graph here</a></h4>  
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile  rowspan="1" colspan="1" >
+        <mat-card class="dashboard-card card-image2">
+          <mat-card-header class="mat-app-background card-title">
+            <mat-card-title>
+              <h4 class = p >Pill monitor</h4>
+            </mat-card-title> 
+          </mat-card-header>
+          <br>
+          <br>
+          <h4 class = h>Pill consumption history</h4>
+          <h4><a style="color: white; font-size:20px; font-family: Arial, Helvetica, sans-serif;font-weight: bold" [routerLink]="'/pill'" routerLinkActive="active" >click here to view pill consumption timeline</a></h4>
+          <h4 class = h>Pill consumption status</h4>
+          <h4 class = h>All good!!</h4>
+        </mat-card>
+      </mat-grid-tile>
+  </mat-grid-list> 
+</div>
+
+   

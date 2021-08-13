@@ -1,0 +1,54 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 10px;
+  left: 200px;
+  right: 10px;
+  bottom: 10px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.card-image1{
+  background-size: 300px 100px;
+  background-repeat: no-repeat;
+  background-image: url("/../assets/thermal.jpg");
+  cursor: pointer;
+}
+.card-image2{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/../assets/card3.jpeg");
+  cursor: pointer;
+}
+
+
+.card-title{
+  padding-top: 10px;
+  border-radius: 6px;
+}
+
+.p{
+  color : rgb(19, 18, 18);
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+.h{
+  color :darkblue;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
