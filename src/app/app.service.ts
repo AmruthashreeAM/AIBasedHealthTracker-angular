@@ -13,20 +13,20 @@ export class AppService {
   constructor(public httpClient: HttpClient) { }
 
   getDeals(username): Observable<any> {
-    return this.httpClient.get('http://https://healthcare-server123.herokuapp.com//temperature/'+username);
+    return this.httpClient.get('https://healthcare-server123.herokuapp.com/temperature/'+username);
   }
 
   updateTemperature(username,temparature): any { 
    // const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post('http://https://healthcare-server123.herokuapp.com//temperature/' + username + '/updateTemperature/',temparature);
+    return this.httpClient.post('https://healthcare-server123.herokuapp.com/temperature/' + username + '/updateTemperature/',temparature);
   }
 
   generateRecords(username): Observable<any> { 
-    return this.httpClient.get('http://https://healthcare-server123.herokuapp.com//generateRecords');
+    return this.httpClient.get('https://healthcare-server123.herokuapp.com/generateRecords');
   }
 
   generateIndentifiedPateints(username): Observable<any> { 
-    return this.httpClient.get('http://https://healthcare-server123.herokuapp.com//facialRecognition');
+    return this.httpClient.get('https://healthcare-server123.herokuapp.com/facialRecognition');
   }
 }
