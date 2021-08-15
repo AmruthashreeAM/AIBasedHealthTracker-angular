@@ -29,7 +29,7 @@ export class TemparatureComponent implements OnInit {
   ngOnInit(): void {
     let list1: number[] = [];
     let list2: number[] = [];
-    this.appService.getDeals(this.userSubject.value.username).subscribe(
+    this.appService.getTemperature(this.userSubject.value.username).subscribe(
       response => {
           response.temparature.forEach(element => {
           list1.push(element.temperatureNow);
