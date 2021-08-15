@@ -17,7 +17,7 @@ export class AppService {
   }
 
   getPill(username): Observable<any> {
-    return this.httpClient.get('https://healthcare-server123.herokuapp.com//pill/'+username);
+    return this.httpClient.get('https://healthcare-server123.herokuapp.com/pill/'+username);
   }
 
   updateTemperature(username,temparature): any { 
