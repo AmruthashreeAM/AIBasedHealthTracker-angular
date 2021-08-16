@@ -33,7 +33,7 @@ export class AppService {
    }  
 
   generateRecords(username): Observable<any> { 
-    return this.httpClient.get('https://raidlabs.azurewebsites.net/generateRecords');
+    return this.httpClient.get('http://localhost:5000/generateRecords');
   }
   generatePillData(username): Observable<any> { 
     return this.httpClient.get('http://localhost:5002/generatePillData');
