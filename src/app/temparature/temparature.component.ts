@@ -22,8 +22,7 @@ export class TemparatureComponent implements OnInit {
   recordedDateTimeDetails =[];
   constructor(public appService: AppService) { 
     this.userSubject = new BehaviorSubject<MongoUser>(JSON.parse(localStorage.getItem('user')));
-    this.user = this.userSubject.asObservable();
-    
+    this.user = this.userSubject.asObservable();  
   }
 
   ngOnInit(): void {
@@ -54,7 +53,7 @@ export class TemparatureComponent implements OnInit {
     this.temparatures = this.tempDetails;
     this.recordedDateTime = this.recordedDateTimeDetails;
     this.lineChartData = [{data: this.temparatures, label: 'Daily'}];
-    //this.lineChartLabels = this.recordedDateTime;
+    this.lineChartLabels = this.recordedDateTime;
   }
 
   
@@ -62,7 +61,7 @@ export class TemparatureComponent implements OnInit {
   lineChartData: ChartDataSets[] = [
     { 
       data: [],
-      label: 'weekly' 
+      label: 'hourly' 
     }
   ];
 
