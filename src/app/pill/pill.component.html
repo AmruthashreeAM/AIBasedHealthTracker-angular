@@ -7,8 +7,28 @@
             <mat-card-header class="mat-app-background card-title">
               <mat-card-title>
                 <h4>Pill stats</h4>
-                <h4>Pill taken Yes/No</h4>
-                <h4>Pill history</h4>
+                <!-- <div class="chartjs-container">
+                  <canvas baseChart
+                      [datasets]="lineChartData" 
+                      [labels]="lineChartLabels" 
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors" 
+                      [legend]="lineChartLegend" 
+                      [chartType]="lineChartType" 
+                      >
+                  </canvas>
+              </div> -->
+              <div style="display: block" *ngIf="lineChartData.length > 0">
+                <canvas baseChart
+                [datasets]="lineChartData" 
+                [labels]="lineChartLabels" 
+                [options]="lineChartOptions"
+                [colors]="lineChartColors" 
+                [legend]="lineChartLegend" 
+                [chartType]="lineChartType" 
+                >
+            </canvas>
+        </div> 
               </mat-card-title> 
             </mat-card-header>
           </mat-card>
