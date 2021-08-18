@@ -53,7 +53,7 @@ export class TemparatureComponent implements OnInit {
     this.temparatures = this.tempDetails;
     this.recordedDateTime = this.recordedDateTimeDetails;
     this.lineChartData = [{data: this.temparatures, label: 'Daily'}];
-    this.lineChartLabels = this.recordedDateTime;
+    //this.lineChartLabels = this.recordedDateTime;
   }
 
   
@@ -61,7 +61,7 @@ export class TemparatureComponent implements OnInit {
   lineChartData: ChartDataSets[] = [
     { 
       data: [],
-      label: 'hourly' 
+      label: 'Daily' 
     }
   ];
 

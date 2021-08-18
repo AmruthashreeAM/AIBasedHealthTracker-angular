@@ -39,6 +39,6 @@ export class AppService {
     return this.httpClient.get('http://localhost:5002/generatePillData');
   }
   generateIndentifiedPateints(username): Observable<any> { 
-    return this.httpClient.get('http://localhost:5001/facialRecognition');
+    return this.httpClient.get('http://localhost:5001/facialRecognition?username=' + username);
   }
 }

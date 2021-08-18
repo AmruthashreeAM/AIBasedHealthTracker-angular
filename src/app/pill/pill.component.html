@@ -1,37 +1,29 @@
 <app-nav></app-nav>
 <div class="grid-container">
     <h1 class="mat-h1"></h1>
-    <mat-grid-list cols="2" rowHeight="100px">
-        <mat-grid-tile  rowspan="2" >
+    <mat-grid-list cols="1" rowHeight="100px">
+        <mat-grid-tile  rowspan="8" >
           <mat-card class="dashboard-card card-image">
             <mat-card-header class="mat-app-background card-title">
               <mat-card-title>
-                <h4>Pill stats</h4>
-                <!-- <div class="chartjs-container">
-                  <canvas baseChart
-                      [datasets]="lineChartData" 
-                      [labels]="lineChartLabels" 
-                      [options]="lineChartOptions"
-                      [colors]="lineChartColors" 
-                      [legend]="lineChartLegend" 
-                      [chartType]="lineChartType" 
-                      >
-                  </canvas>
-              </div> -->
-              <div style="display: block" *ngIf="lineChartData.length > 0">
-                <canvas baseChart
-                [datasets]="lineChartData" 
-                [labels]="lineChartLabels" 
-                [options]="lineChartOptions"
-                [colors]="lineChartColors" 
-                [legend]="lineChartLegend" 
-                [chartType]="lineChartType" 
-                >
-            </canvas>
-        </div> 
-              </mat-card-title> 
+                <div style="margin:0 30px;">
+                  <table>
+                      <tr>
+                          <th>Latest pill consumption timeline</th>
+                      </tr>
+                      <tr>
+                      </tr>
+                      <tr *ngFor="let pill of pillDetails;">
+                          <td>{{ pill.PillTakenDateTime }}</td>
+                      </tr>
+                  </table>
+              </div>              
+            </mat-card-title> 
             </mat-card-header>
           </mat-card>
         </mat-grid-tile>
     </mat-grid-list> 
   </div>
+  
+
+  

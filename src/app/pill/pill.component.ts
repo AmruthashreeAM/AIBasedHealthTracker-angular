@@ -3,8 +3,6 @@ import { AppService } from '../app.service';
 import { NotifierService } from '../notifier.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MongoUser } from '../_models/mongouser';
-import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-pill',
@@ -15,30 +13,23 @@ export class PillComponent implements OnInit {
   private userSubject: BehaviorSubject<MongoUser>;
   public user: Observable<MongoUser>;
   private notifierService: NotifierService
-  temparatures : number[] = [];
-  recordedDateTime : string[] = [];
-  tempDetails : number[]=[];
-  recordedDateTimeDetails =[];
-  constructor(public appService: AppService) { 
+  data = [];
+  pillDetails = [];
+  constructor(public appService: AppService) {
     this.userSubject = new BehaviorSubject<MongoUser>(JSON.parse(localStorage.getItem('user')));
-    this.user = this.userSubject.asObservable();
-  }
+    this.user = this.userSubject.asObservable();  
+   }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     let list1: number[] = [];
-    let list2: number[] = [];
     this.appService.getPill(this.userSubject.value.username).subscribe(
       response => {
           response.pill.forEach(element => {
-          list1.push(element.PillTakenDateTime);
-          //list2.push(element.recordedDateTime);
+          list1.push(element);
         });;
-        this.tempDetails = list1;
-        this.recordedDateTimeDetails = list2;
+        this.data = list1;
         this.loadData();
-        //console.log("this.temparatures ## ",this.pill);
-        //console.log("this.temparatures ## ",this.PillTakenDateTime);
-
+        console.log("pill ## ",this.pillDetails);
         //this.notifierService.showNotification('Todays deals loaded successfully. Click on any deal!', 'OK', 'success');
       },
       error => {
@@ -46,45 +37,9 @@ export class PillComponent implements OnInit {
         this.notifierService.showNotification('There was an error in receiving data from server!', 'OK', 'error');
       }
     );
-
   }
+
   loadData() {
-    this.temparatures = this.tempDetails;
-    this.recordedDateTime = this.recordedDateTimeDetails;
-    this.lineChartData = [{data: this.temparatures, label: 'Daily'}];
-    this.lineChartLabels = this.recordedDateTime;
+    this.pillDetails = this.data;
   }
-
-  
-  type = 'line';
-  lineChartData: ChartDataSets[] = [
-    { 
-      data: [],
-      label: 'hourly' 
-    }
-  ];
-
-  //Labels shown on the x-axis
-  lineChartLabels: Label[] = ["D1", "D2", "D3", "D4", "D5", "D6", "D7"];
-
-  // Define chart options
-  lineChartOptions: ChartOptions = {
-    responsive: true
-  };
-
-  // Define colors of chart segments
-  lineChartColors: Color[] = [
-
-    { // red
-      backgroundColor: 'rgba(255,0,0,0.3)',
-      borderColor: 'red',
-    }
-  ];
-
-  // Set true to show legends
-  lineChartLegend = true;
-
-  // Define type of chart
-  lineChartType = 'line';
-  
 }
